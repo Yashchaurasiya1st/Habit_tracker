@@ -1,0 +1,24 @@
+{
+  "name": "habit-tracker",
+  "version": "1.0.0",
+  "description": "Dark Habit Tracker Desktop App",
+  "main": "main.js",
+  "author": "HabitTracker",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win portable --x64"
+  },
+  "build": {
+    "appId": "com.habittracker.app",
+    "productName": "Habit Tracker",
+    "directories": { "output": "dist" },
+    "win": {
+      "target": [{ "target": "portable", "arch": ["x64"] }]
+    },
+    "files": ["main.js", "preload.js", "index.html"]
+  },
+  "devDependencies": {
+    "electron": "^32.0.0",
+    "electron-builder": "^24.13.3"
+  }
+}
