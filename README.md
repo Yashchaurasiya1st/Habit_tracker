@@ -1,3 +1,4 @@
+
 # 🎯 Habit Tracker
 
 > A dark-themed desktop app built with Electron to track daily habits, visualize weekly progress, and stay consistent — month after month.
@@ -13,7 +14,8 @@
 
 > **Dashboard** — Monthly grid, progress charts, stats overview and mental state tracker all in one dark interface.
 
-*(Add a screenshot here: drag an image into the repo on GitHub and paste the link)*
+<img width="1751" height="1012" alt="Screenshot 2026-06-03 154553" src="https://github.com/user-attachments/assets/1a5c0675-7bab-40d5-b8c8-c941df618658" /><img width="1751" height="1012" alt="Screenshot 2026-06-03 154603" src="https://github.com/user-attachments/assets/1ad161f5-1943-4ab0-8bb3-6eb0ca8662a3" />
+
 
 ---
 
