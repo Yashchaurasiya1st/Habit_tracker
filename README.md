@@ -1,46 +1,49 @@
 # 🎯 Habit Tracker
 
-A sleek, dark-themed desktop application built with **Electron** to help you build and track daily habits. Visualize your progress with charts, monitor streaks, and stay consistent — all from a beautiful, distraction-free interface.
+> A dark-themed desktop app built with Electron to track daily habits, visualize weekly progress, and stay consistent — month after month.
+
+![Platform](https://img.shields.io/badge/platform-Windows-blue?style=flat-square&logo=windows)
+![Electron](https://img.shields.io/badge/Electron-32.x-47848F?style=flat-square&logo=electron)
+![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
+![Status](https://img.shields.io/badge/status-active-brightgreen?style=flat-square)
+
+---
+
+## 📸 Preview
+
+> **Dashboard** — Monthly grid, progress charts, stats overview and mental state tracker all in one dark interface.
+
+*(Add a screenshot here: drag an image into the repo on GitHub and paste the link)*
 
 ---
 
 ## ✨ Features
 
-- **📊 Dashboard Overview** — See total goals, completed tasks, and remaining items at a glance with stat cards and a donut chart.
-- **📈 Daily &amp; Weekly Charts** — Track your daily and weekly completion percentages with interactive Chart.js visualizations.
-- **📅 Monthly Habit Grid** — A spreadsheet-style tracker showing every habit x every day of the month, with checkboxes.
-- **✏️ Edit Mode** — Add, rename, reorder (drag and drop), and delete habits with an intuitive inline editor.
-- **🏆 Top 10 Leaderboard** — See your best-performing habits ranked by completion percentage.
-- **🧠 Mental State Tracker** — Log daily mood and motivation scores (1-10) to correlate with your habit performance.
-- **↩️ Undo / Redo** — Full undo/redo support so you never lose progress by accident.
-- **💾 Auto-Save** — Data is automatically saved to disk (Electron) or localStorage (browser fallback).
-- **🌙 Dark Mode** — Premium dark UI with custom CSS variables, glassmorphism accents, and smooth animations.
-- **📆 Month/Year Navigation** — Easily switch between months and years to review past performance.
-
----
-
-## 🖼️ Screenshots
-
-> _Add screenshots of your app here to showcase the UI._
->
-> Example:
-> ```
-> ![Dashboard](screenshots/dashboard.png)
-> ![Edit Mode](screenshots/edit-mode.png)
-> ```
+| Feature | Description |
+|---|---|
+| 📅 Monthly Habit Grid | Checkbox for every habit × every day of the month |
+| 📊 Daily & Weekly Charts | Bar charts showing completion % over time |
+| 🍩 Overall Stats Donut | Visual breakdown of completed vs remaining |
+| ✏️ Edit Mode | Add, rename, reorder (drag & drop), and delete habits in one panel |
+| 🏆 Top 10 Leaderboard | Habits ranked by completion percentage |
+| 🧠 Mental State Tracker | Log daily mood and motivation (1–10 scale) |
+| ↩️ Undo / Redo | Up to 80-step history — never lose progress by accident |
+| 💾 Auto-Save | Saves to disk on every action — no save button needed |
+| 📆 Month Navigation | Switch between any month/year to review past data |
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Layer       | Technology                                                   |
-| ----------- | ------------------------------------------------------------ |
-| Framework   | [Electron](https://www.electronjs.org/) v32+                |
-| Frontend    | Vanilla HTML, CSS, JavaScript (single `index.html`)          |
-| Charts      | [Chart.js](https://www.chartjs.org/) v4.4.1 (CDN)           |
-| Typography  | [Google Fonts](https://fonts.google.com/) — DM Mono + Syne  |
-| Build       | [electron-builder](https://www.electron.build/) v24+        |
-| Packaging   | Windows Portable (x64)                                      |
+| Layer | Technology |
+|---|---|
+| Framework | [Electron](https://www.electronjs.org/) v32 |
+| Frontend | Vanilla HTML + CSS + JavaScript (`index.html`) |
+| Charts | [Chart.js](https://www.chartjs.org/) v4.4.1 |
+| Fonts | Google Fonts — DM Mono + Syne |
+| Build Tool | [electron-builder](https://www.electron.build/) v24 |
+| Storage | File system via IPC (`habit_data.json`) |
+| Output | Windows Portable EXE (x64) |
 
 ---
 
@@ -48,11 +51,11 @@ A sleek, dark-themed desktop application built with **Electron** to help you bui
 
 ```
 Habit_tracker/
-├── index.html      # Main UI — HTML + embedded CSS + JavaScript
-├── main.js         # Electron main process (window creation + IPC)
-├── preload.js      # Context bridge for secure IPC communication
-├── package.json    # Dependencies, scripts and build configuration
-└── README.md       # This file
+├── index.html       # Full app UI — HTML, CSS, and JS in one file
+├── main.js          # Electron main process — window + IPC handlers
+├── preload.js       # Secure context bridge for renderer ↔ main IPC
+├── package.json     # Scripts, build config, and dependencies
+└── README.md        # You are here
 ```
 
 ---
@@ -61,86 +64,102 @@ Habit_tracker/
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) v18 or higher
-- [npm](https://www.npmjs.com/) (comes with Node.js)
+- [Node.js](https://nodejs.org/) v18 or higher (LTS recommended)
+- npm (comes with Node.js)
+- Windows 10/11 (for building the `.exe`)
 
-### Installation
+### Run in Development
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/Yashchaurasiya1st/Habit_tracker.git
-   cd Habit_tracker
-   ```
+```bash
+# 1. Clone the repo
+git clone https://github.com/Yashchaurasiya1st/Habit_tracker.git
+cd Habit_tracker
 
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+# 2. Install dependencies
+npm install
 
-3. **Run the app:**
-   ```bash
-   npm start
-   ```
+# 3. Launch the app
+npm start
+```
 
-### Build for Production
+### Build Windows EXE
 
-To create a portable Windows executable:
+> ⚠️ Run Command Prompt **as Administrator** to avoid symlink permission errors on Windows.
 
 ```bash
 npm run build
 ```
 
-The output will be in the `dist/` directory.
+Output: `dist/Habit Tracker 1.0.0.exe` — portable, no installation needed.
 
 ---
 
-## 🎮 Usage
+## 🎮 How to Use
 
-1. **Track Habits** — Click the checkboxes in the daily grid to mark habits as done.
-2. **Edit Habits** — Click the `Edit` button to enter edit mode where you can:
-   - Add new habits
-   - Rename existing habits
-   - Drag to reorder habits
-   - Delete habits
-3. **Switch Months** — Use the year and month dropdowns to navigate between different time periods.
-4. **Log Mental State** — In the bottom panel, enter daily mood and motivation scores (1-10).
-5. **Undo / Redo** — Use the Undo and Redo buttons to revert or reapply changes.
-6. **Reset Month** — Click "Reset Month" to clear all data for the current month.
+1. **Check habits** — Click any checkbox in the grid to mark a habit done for that day
+2. **Edit mode** — Click **✏ Edit** to:
+   - Add a new habit (type name → press Enter or click **+ Add Habit**)
+   - Rename a habit (click the name field and type)
+   - Reorder habits (drag the ☰ handle or use ▲▼ buttons)
+   - Delete a habit (click ✕)
+   - Click **✕ Done Editing** to close and auto-save all changes
+3. **Switch months** — Use the year and month dropdowns at the top
+4. **Mental state** — Enter mood and motivation scores (1–10) in the bottom panel
+5. **Undo / Redo** — Use ↩ and ↪ buttons to step through your change history
+6. **Reset Month** — Clears all checkboxes for the current month (asks for confirmation)
 
 ---
 
-## 📦 Data Storage
+## 💾 Data Storage
 
-- **Electron Mode:** Data is saved as `habit_data.json` in the app's user data directory.
-- **Browser Mode (fallback):** Data is stored in `localStorage` under the key `habit_tracker_dark_v1`.
+| Mode | Location |
+|---|---|
+| Electron (`.exe`) | `%APPDATA%\habit-tracker\habit_data.json` |
+| Browser (fallback) | `localStorage` → key: `habit_tracker_dark_v1` |
+
+Data is saved automatically on every action — no manual save required.
+
+---
+
+## 📦 Download
+
+Head to the [Releases](https://github.com/Yashchaurasiya1st/Habit_tracker/releases) page to download the latest portable `.exe` for Windows.
+
+No installation required — just download and double-click to run.
+
+---
+
+## ⚠️ Things to Fix / Add
+
+- [ ] Add a screenshot to the Preview section above
+- [ ] Add a `.gitignore` file to exclude `node_modules/` and `dist/`
+- [ ] Add a `LICENSE` file (MIT recommended)
+- [ ] Add repo description and topics on GitHub sidebar (e.g. `electron`, `habit-tracker`, `dark-theme`, `productivity`)
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Feel free to:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
+1. Fork this repository
+2. Create a feature branch: `git checkout -b feature/your-feature`
+3. Commit your changes: `git commit -m "Add your feature"`
+4. Push to the branch: `git push origin feature/your-feature`
 5. Open a Pull Request
 
 ---
 
 ## 📄 License
 
-This project is open source. Consider adding a [LICENSE](https://choosealicense.com/) file to specify how others can use your code.
+This project is open source. Consider adding a [LICENSE](https://choosealicense.com/licenses/mit/) file to let others freely use and build on this project.
 
 ---
 
 ## 👤 Author
 
-**Yash Chaurasiya** — [@Yashchaurasiya1st](https://github.com/Yashchaurasiya1st)
+**Yash Chaurasiya**
+- GitHub: [@Yashchaurasiya1st](https://github.com/Yashchaurasiya1st)
+- Project: [Habit_tracker](https://github.com/Yashchaurasiya1st/Habit_tracker)
 
 ---
 
-<p align="center">
-  Made with ❤️ for building better habits
-</p>
-
+*Built with ❤️ to make consistency a daily habit.*
